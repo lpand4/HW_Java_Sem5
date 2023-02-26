@@ -5,9 +5,11 @@ import java.util.Map;
  */
 public class App1 {
     public static void main(String[] args) {
+        int[] start = {5, 2};
+        int[][] finish = {{6, 7}, {6, 9}};
         int[][] area = initArea();
-        printArea(area);
         
+        printArea(area, start, finish);
     }
     
     public static int[][] initArea() {
@@ -15,11 +17,11 @@ public class App1 {
         //Стены вокруг поля для проверки
         for (int i = 0; i < area.length; i++) {
             area[0][i] = -1;
-            area[10][i] = -1;
+            area[area.length - 1][i] = -1;
             area[i][0] = -1;
-            area[i][10] = -1;
+            area[i][area.length - 1] = -1;
         }
-        //Сам лабиринт
+        //Сам лабиринт статичный
         area[3][2] = -1; area[4][3] = -1; area[5][3] = -1; area[6][3] = -1; area[7][2] = -1; area[7][1] = -1;
         area[3][6] = -1; area[4][6] = -1; area[5][6] = -1; area[6][6] = -1; area[7][6] = -1; area[7][5] = -1;
         area[3][5] = -1; area[3][7] = -1; area[3][8] = -1; area[5][8] = -1; area[6][8] = -1; area[7][8] = -1;
@@ -27,9 +29,8 @@ public class App1 {
         return area;
     }
 
-    public static void printArea(int[][] area) {
-        int[] start = {5, 2};
-        int[][] finish = {{6, 7}, {6, 9}};
+    public static void printArea(int[][] area, int[] start, int[][] finish) {
+
         for (int i = 0; i < area.length; i++) {
             for (int j = 0; j < area.length; j++) {
                 if(area[i][j] == -1)
@@ -49,5 +50,8 @@ public class App1 {
             System.out.println();
         }
     }
-    
+
+    public static void findWays(int[][] area, int[] start, int[][] finish) {
+        
+    }
 }
